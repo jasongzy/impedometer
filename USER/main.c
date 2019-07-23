@@ -12,7 +12,7 @@
 #include "ad8302.h"
 #include "hmi.h"
 
-#include "stdlib.h"
+//#include "stdlib.h"
 
 extern uchar cfr2[4]; //cfr2控制字
 extern uchar cfr1[4]; //cfr1控制字
@@ -25,7 +25,7 @@ int main(void)
 	//u16 j = 0;
 	u16 times = 0;
 	u8 key;
-	u8 flag = 0; //按键复用标志
+	//u8 flag = 0; //按键复用标志
 
 	//u8 adcout = 0;
 	u16 len;	   //串口接收到的有效数据个数
@@ -168,14 +168,14 @@ int main(void)
 				LCD_ShowString(60, 100, 200, 16, 16, (u8 *)"......");
 				Mag=GetMag();
 				Phs=GetPhs();
-				srand((unsigned)times);
+				//srand((unsigned)times);
 				//Mag*=(0.975+(rand()%5000)/1000.0/100.0);
 				Amp=(Mag-1)*10.0; //10k参考电阻
-				if(flag)
-				{
-					Phs=-0.0;
-					Phs+=(rand()%5000)/1000.0;
-				}
+//				if(flag)
+//				{
+//					Phs=-0.0;
+//					Phs+=(rand()%5000)/1000.0;
+//				}
 				Re = GetRe(Amp, Phs);
 				Im = GetIm(Amp, Phs);
 				
@@ -334,7 +334,7 @@ int main(void)
 					
 				}while(KEY_Scan(0)!=KEY0_PRES);
 				*/
-				flag=!flag;
+				//flag=!flag;
 				break;
 			case KEY1_PRES:		  //扫频
 				Amp_convert(200); //写幅度，输入范围：1-650 mV
